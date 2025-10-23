@@ -327,7 +327,7 @@ You should see:
 
 ```bash
 # Add Using The CLI
- gemini mcp add snykhttp -t http http://127.0.0.1:8000/mcp
+gemini mcp add snykhttp -t http http://127.0.0.1:8000/mcp
 ```
 
 OR edit file ```~/.gemini/settings.json``` 
