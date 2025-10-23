@@ -29,7 +29,7 @@ import httpx
 from arcade_mcp_server import Context, MCPApp, tool
 from arcade_mcp_server.auth import GitHub
 
-app = MCPApp(name="snyk_security_server", version="1.0.0", log_level="INFO")
+app = MCPApp(name="snyk", version="1.0.0", log_level="INFO")
 
 
 # ============================================================================
