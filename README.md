@@ -29,7 +29,7 @@
 - Security-first architecture
 
 **Part 2: Arcade Gateway**
-- Access 20+ production toolkits instantly
+- Access 1000+ production toolkits instantly
 - Google Calendar, Slack, Gmail, GitHub
 - Zero code, managed OAuth
 
@@ -472,14 +472,7 @@ gemini
 ---
 
 ### Tool 3: `analyze_code_security` - Security Analysis
-Let's Revert Back to HTTP-Streamable First:
-```bash
-#STOP RUNNING STDIO SERVER
-#START HTTP SERVER 
-python3 server.py http
-#REMOVE STDIO FIELDS FROM ~/.gemini/settings.json
-gemini mcp list #should see one HTTP Server
-```
+
 **Intent**: Find security vulnerabilities in code
 
 **Code**:
@@ -517,7 +510,7 @@ async def analyze_code_security(context: Context, code: str) -> dict:
 
 **Test**:
 ```
-> use snykhttp.analyze_code_security to check:
+> use snykstdio.analyze_code_security to check:
 import pickle
 def process(data):
     obj = pickle.loads(data)
@@ -578,7 +571,7 @@ async def fetch_github_code(
 
 **Test**:
 ```
-> use snykhttp.fetch_github_code for the repo arcadeai/snyk-mcp-workshop/examples/hello_world.py
+> use snyk.fetch_github_code for the repo arcadeai/snyk-mcp-workshop/examples/hello_world.py
 ```
 
 **Toxic Flow Prevention**:
@@ -633,7 +626,7 @@ async def security_audit_workflow(
 
 **Test**:
 ```
-> use snykhttp.security_audit_workflow for repo arcadeai/snyk-mcp-workshop/examples/hello_world.py
+> use snyk.security_audit_workflow for the repo arcadeai/snyk-mcp-workshop/examples/hello_world.py
 ```
 
 **Watch the server logs**:
@@ -667,10 +660,10 @@ INFO | ✅ Security audit workflow complete!
 │  Analyzes the fetched code (no auth needed)             │
 └──────────────────────┬──────────────────────────────────┘
                        │ Returns analysis
-┌──────────────────────▼───────────────────────────────────┐
-│  Parent Tool: Combines results                           │
-│  Returns comprehensive audit report                      │
-└──────────────────────────────────────────────────────────┘
+┌──────────────────────▼──────────────────────────────────┐
+│  Parent Tool: Combines results                          │
+│  Returns comprehensive audit report                     │
+└─────────────────────────────────────────────────────────┘
 
 SAME GitHub token through 3 tools!
 LLM never saw it in ANY MCP call!
